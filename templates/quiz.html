@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block title %}Quiz — History in Your Pocket{% endblock %}
+{% block content %}
+<div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <div class="title">Practice Quiz</div>
+      <div class="small">Get quick MCQs from events on a specific date or random events.</div>
+    </div>
+    <div>
+      <label for="count" class="small">Questions</label>
+      <input id="count" type="number" value="5" min="1" max="20" style="width:80px" />
+    </div>
+  </div>
+
+  <div style="margin-top:12px" class="row">
+    <div class="col">
+      <label for="dateInput">Date (optional)</label>
+      <input id="dateInput" type="date" />
+    </div>
+    <div style="display:flex;align-items:flex-end">
+      <button class="primary" id="startQuiz">Start Quiz</button>
+    </div>
+  </div>
+</div>
+
+<div id="quiz-area" class="card" style="min-height:120px;margin-top:12px">
+  <div class="small">Click Start Quiz to load questions.</div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  document.getElementById("startQuiz").addEventListener("click", function(){
+    const dateVal = document.getElementById("dateInput").value;
+    const mmdd = dateVal ? dateVal.slice(5) : null;
+    const count = document.getElementById("count").value || 5;
+    loadQuiz(mmdd, count);
+  });
+  // If the page included mmdd in template context, prefill
+  {% if mmdd %}
+    (function(){ const todayInput = document.getElementById("dateInput"); if (todayInput) { const parts = "{{ mmdd }}".split("-"); const fake = new Date(); fake.setMonth(parseInt(parts[0],10)-1); fake.setDate(parseInt(parts[1],10)); const str = fake.toISOString().slice(0,10); todayInput.value = str; } })();
+  {% endif %}
+</script>
+{% endblock %}
