@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{% block title %}History in Your Pocket{% endblock %}</title>
+  <meta name="description" content="{% block description %}Search historical events by date. Daily historical view, timeline, quiz, bookmarks and UPSC-friendly filters.{% endblock %}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <div class="logo">HIP</div>
+        <div>
+          <div class="title">History in Your Pocket</div>
+          <div class="subtitle">Search dates • timelines • quiz • bookmarks</div>
+        </div>
+      </div>
+      <nav class="small">
+        <a href="{{ url_for('index') }}" class="small">Home</a> •
+        <a href="{{ url_for('timeline') }}" class="small">Timeline</a> •
+        <a href="{{ url_for('quiz_page') }}" class="small">Quiz</a> •
+        <a href="{{ url_for('bookmarks_page') }}" class="small">Bookmarks</a> •
+        <a href="{{ url_for('notes_page') }}" class="small">Notes</a>
+      </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer class="small center" style="margin-top:20px;">
+      <div>Made for quick revision · Data stored in JSON · No signup required</div>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bookmarks.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
