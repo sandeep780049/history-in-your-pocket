@@ -1,11 +1,15 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory, abort, url_for
 from datetime import datetime
 from pathlib import Path
+from flask import send_from_directory
 import json
 import random
 import os
 
 app = Flask(__name__)
+@app.route('/robots.txt')
+def robots_txt():
+    return send_from_directory(app.static_folder, 'robots.txt')
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_PATH = BASE_DIR / "data" / "events.json"
