@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}Bookmarks — History in Your Pocket{% endblock %}
+{% block content %}
+<div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <div class="title">Bookmarks</div>
+      <div class="small">Saved items are stored in your browser (localStorage)</div>
+    </div>
+    <div>
+      <button class="ghost" onclick="exportBookmarks()">Export</button>
+      <button class="ghost" onclick="if(confirm('Clear all bookmarks?')){ clearBookmarks(); renderBookmarks(); }">Clear</button>
+    </div>
+  </div>
+</div>
+
+<div id="bookmarksArea" class="card small">
+  Loading bookmarks...
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+function renderBookmarks(){
+  const area = document.getElementById("bookmarksArea");
+  const list = loadBookmarks();
+  if (!list || !list.length) {
+    area.innerHTML = "<div class='small'>No bookmarks yet. Use 'Bookmark' buttons on event cards to save items.</div>";
+    return;
+  }
+  area.innerHTML = "";
+  list.forEach((b, idx) => {
+    const div = document.createElement("div");
+    div.className = "event";
+    div.innerHTML = `<div class="meta">${b.date || ''} • ${b.category || ''}</div>
+                     <div class="title">${b.title}</div>
+                     <div class="desc">${b.description || ''}</div>
+                     <div style="margin-top:8px">
+                       <button class="ghost" onclick='copyToClipboard(${JSON.stringify(b.title + " — " + (b.description||""))})'>Copy</button>
+                     </div>`;
+    area.appendChild(div);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  renderBookmarks();
+});
+</script>
+{% endblock %}
