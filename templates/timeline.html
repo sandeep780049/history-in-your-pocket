@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block title %}Timeline — History in Your Pocket{% endblock %}
+{% block content %}
+<div class="card">
+  <form method="get" action="{{ url_for('timeline') }}">
+    <div class="row">
+      <div class="col">
+        <label for="year">Enter a year to view events (e.g. 1947)</label>
+        <input id="year" name="year" type="number" placeholder="Year" />
+      </div>
+      <div style="display:flex;align-items:flex-end">
+        <button class="primary" type="submit">Show</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% if year %}
+  <div class="card">
+    <div class="title">Timeline — {{ year }}</div>
+    {% if year_events %}
+      {% for e in year_events %}
+        <div class="event">
+          <div class="meta">{{ e.date }} • {{ e.category }} • {{ e.region }}</div>
+          <div class="title">{{ e.title }}</div>
+          <div class="desc">{{ e.description }}</div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="small">No events recorded for {{ year }} in dataset.</div>
+    {% endif %}
+  </div>
+{% endif %}
+{% endblock %}
+
