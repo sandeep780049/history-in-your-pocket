@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}Search Results — History in Your Pocket{% endblock %}
+{% block content %}
+<div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <div class="title">Search results</div>
+      <div class="small">Showing events{% if selected_mmdd %} for {{ selected_mmdd }}{% endif %}{% if q %} matching “{{ q }}”{% endif %}</div>
+    </div>
+    <div class="small">Total: {{ events|length }}</div>
+  </div>
+</div>
+
+{% if events %}
+  {% for e in events %}
+    <div class="event card">
+      <div class="meta">
+        {{ e.date if e.get('date') else (e.get('yyyy') or '') }} • {{ e.category }}{% if e.region %} • {{ e.region }}{% endif %}
+      </div>
+      <div class="title">{{ e.title }}</div>
+      <div class="desc">{{ e.description }}</div>
+      <div style="margin-top:8px">
+        <button class="ghost" onclick='copyToClipboard(`{{ e.title }} — {{ e.description }}`)'>Copy</button>
+        <button class="ghost" onclick='addBookmark({"title":"{{ e.title|e }}","date":"{{ e.date }}","description":"{{ e.description|e }}","category":"{{ e.category|e }}"}) && alert("Saved to bookmarks")'>Bookmark</button>
+        <button class="ghost" onclick='downloadFile("event-{{ loop.index }}.txt", `{{ e.title|e }}\n\n{{ e.description|e }}\n\nDate: {{ e.date }}\nCategory: {{ e.category }}`)'>Download</button>
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <div class="card small">No results found. Try a broader query or check different category/year range.</div>
+{% endif %}
+
+{% endblock %}
