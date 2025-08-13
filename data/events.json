@@ -1,0 +1,106 @@
+[
+  {
+    "date": "1947-08-15",
+    "title": "India gains independence",
+    "description": "The Dominion of India gained independence from the United Kingdom.",
+    "category": "Political",
+    "region": "India",
+    "tags": ["independence", "india", "british"]
+  },
+  {
+    "date": "1950-01-26",
+    "title": "Republic Day of India",
+    "description": "The Constitution of India came into effect; India became a republic.",
+    "category": "Political",
+    "region": "India",
+    "tags": ["constitution", "india"]
+  },
+  {
+    "date": "1969-07-20",
+    "title": "Apollo 11 Moon Landing",
+    "description": "Neil Armstrong and Buzz Aldrin landed on the Moon; 'one small step' historic moment.",
+    "category": "Scientific",
+    "region": "World",
+    "tags": ["moon", "nasa", "space"]
+  },
+  {
+    "date": "1914-07-28",
+    "title": "Start of World War I",
+    "description": "World War I began after the Austro-Hungarian declaration of war on Serbia.",
+    "category": "Military",
+    "region": "Europe",
+    "tags": ["ww1"]
+  },
+  {
+    "date": "1945-09-02",
+    "title": "End of World War II",
+    "description": "Formal surrender of Japan marked the end of World War II.",
+    "category": "Military",
+    "region": "World",
+    "tags": ["ww2", "surrender"]
+  },
+  {
+    "date": "1879-03-14",
+    "title": "Albert Einstein born",
+    "description": "Physicist Albert Einstein, developer of the theory of relativity, was born.",
+    "category": "Cultural",
+    "region": "Germany",
+    "tags": ["einstein", "science"]
+  },
+  {
+    "date": "1948-01-30",
+    "title": "Assassination of Mahatma Gandhi",
+    "description": "Mahatma Gandhi was assassinated in New Delhi.",
+    "category": "Political",
+    "region": "India",
+    "tags": ["gandhi", "assassination"]
+  },
+  {
+    "date": "1990-11-09",
+    "title": "Fall of the Berlin Wall",
+    "description": "The Berlin Wall fell, symbolizing the end of the Cold War era divide in Germany.",
+    "category": "Political",
+    "region": "Germany",
+    "tags": ["berlin", "cold war"]
+  },
+  {
+    "date": "1903-12-17",
+    "title": "Wright brothers' first flight",
+    "description": "Orville and Wilbur Wright made the first successful powered airplane flight.",
+    "category": "Scientific",
+    "region": "USA",
+    "tags": ["flight", "aviation"]
+  },
+  {
+    "date": "1918-07-18",
+    "title": "Nelson Mandela born",
+    "description": "Nelson Rolihlahla Mandela, anti-apartheid revolutionary and later President of South Africa, was born.",
+    "category": "Political",
+    "region": "South Africa",
+    "tags": ["mandela", "apartheid"]
+  },
+  {
+    "date": "1929-01-15",
+    "title": "Martin Luther King Jr. born",
+    "description": "Civil rights leader Martin Luther King Jr. was born.",
+    "category": "Cultural",
+    "region": "USA",
+    "tags": ["civil rights", "mlk"]
+  },
+  {
+    "date": "2004-11-26",
+    "title": "Indian Ocean Earthquake and Tsunami",
+    "description": "A massive undersea earthquake triggered a series of tsunamis affecting many countries.",
+    "category": "Disaster",
+    "region": "Indian Ocean",
+    "tags": ["tsunami", "earthquake", "2004"]
+  },
+  {
+    "date": "1998-05-11",
+    "title": "Pokhran-II nuclear tests",
+    "description": "India conducted a series of nuclear tests in Pokhran.",
+    "category": "Military",
+    "region": "India",
+    "tags": ["pokhran", "nuclear"]
+  }
+]
