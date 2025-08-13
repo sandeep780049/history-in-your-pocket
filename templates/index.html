@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block title %}Home — History in Your Pocket{% endblock %}
+{% block content %}
+<div class="card">
+  <form action="{{ url_for('results') }}" method="get">
+    <div class="row">
+      <div class="col">
+        <label for="date">Pick a date (see what happened on that day)</label>
+        <input id="date" name="date" type="date" />
+      </div>
+
+      <div class="col">
+        <label for="q">Search (keyword, person, place)</label>
+        <input id="q" name="q" type="text" placeholder="e.g. independence, moon, gandhi" />
+      </div>
+    </div>
+
+    <div style="height:12px"></div>
+
+    <div class="row">
+      <div class="col">
+        <label for="category">Category</label>
+        <select id="category" name="category">
+          <option>All</option>
+          {% for c in categories %}
+            <option>{{ c }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col">
+        <label>Year range (optional)</label>
+        <div style="display:flex;gap:8px">
+          <input name="start_year" type="number" placeholder="From (e.g. 1900)" min="0" />
+          <input name="end_year" type="number" placeholder="To (e.g. 2000)" min="0" />
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-end;">
+        <button class="primary" type="submit">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <div style="font-weight:700">{{ today_str }} — Today in history</div>
+      <div class="small">Events that occurred on this date across years</div>
+    </div>
+    <div class="small">Total: {{ todays_events|length }}</div>
+  </div>
+
+  <div style="margin-top:12px">
+    {% if todays_events %}
+      {% for e in todays_events %}
+        <div class="event">
+          <div class="meta">{{ e.year if e.get('yyyy') else '' }} • {{ e.category }} • {{ e.region }}</div>
+          <div class="title">{{ e.title }}</div>
+          <div class="desc">{{ e.description }}</div>
+          <div style="margin-top:8px">
+            <button class="ghost" onclick='copyToClipboard(`{{ e.title }} — {{ e.description }}`)'>Copy</button>
+            <button class="ghost" onclick='addBookmark({"title":"{{ e.title|e }}","date":"{{ e.date }}","description":"{{ e.description|e }}","category":"{{ e.category|e }}"}) && alert("Saved to bookmarks")'>Bookmark</button>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="small">No notable events recorded for today in the dataset.</div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  // set default date to today
+  setDateToTodayInput("#date");
+</script>
+{% endblock %}
