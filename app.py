@@ -87,8 +87,8 @@ def filter_events(q=None, category=None, start_year=None, end_year=None, mmdd=No
     results = sorted(results, key=lambda x: (x.get("yyyy", 0), x.get("date","")))
     return results
 
-@app.route("/generate-full-history")
-def generate-full_history():
+@app.route("/full-history")
+def genrate_full_history():
     history_data = generate_full_history()
     return render_template("full_history.html", history=history_data)
 
