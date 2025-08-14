@@ -88,7 +88,7 @@ def filter_events(q=None, category=None, start_year=None, end_year=None, mmdd=No
     return results
 
 @app.route("/full-history")
-def genrate_full_history():
+def generate_full_history():
     history_data = generate_full_history()
     return render_template("full_history.html", history=history_data)
 
