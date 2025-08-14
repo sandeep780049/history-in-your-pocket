@@ -1,5 +1,4 @@
-Flask
-gunicorn
-requests
+Flask==2.2.5
+gunicorn==20.1.0
 setuptools>=65.5.0
 wheel
