@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, jsonify, send_from_directory,
 from datetime import datetime
 from pathlib import Path
 from flask import send_from_directory
-from generate_full_history import generate_full_history
 import json
 import random
 import os
@@ -87,10 +86,6 @@ def filter_events(q=None, category=None, start_year=None, end_year=None, mmdd=No
     results = sorted(results, key=lambda x: (x.get("yyyy", 0), x.get("date","")))
     return results
 
-@app.route("/full-history")
-def generate_full_history():
-    history_data = generate_full_history()
-    return render_template("full_history.html", history=history_data)
 
 # Routes
 @app.route("/")
